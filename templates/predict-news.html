@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Erenpro - Personal Project</title>
+    <link rel="icon" href="{{url_for('static', filename='img/p1.png')}}" type="image/png" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Uram Multipurpose Personal Portfolio Template">
+    <meta name="keywords" content="Uram HTML Template, Uram Personal Portfolio Template, Personal Portfolio">
+    
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/css/animate.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/css/owl.carousel.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/css/owl.theme.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/css/magnific-popup.css"> 
+    
+    <link rel="stylesheet" href="{{url_for('static', filename='css/stylef.css')}}"> 
+    
+    
+    <link rel="stylesheet" href="../static/css/stylef.css"> 
+
+    <link rel="stylesheet" href="../static/style.css">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+   
+
+
+  </head>
+  <body>
+    <div class="con-ulasan">
+      <div class="closeUl"><button onclick="semUl()">X</button></div>
+      <div class="wrap-ulasan">
+        RATING
+      </div>
+    </div>
+    
+    <div class='tpre'>
+      <div id="preload">
+        <div class='loading'></div>
+        <h3>Prosessing</h3>
+      </div>
+    </div>
+    
+    
+    <div class="wrapper">
+      <!-- Navbar Section -->
+      <nav class="navbar navbar-expand-md navbar-light navbar-alt bg-light fixed-top no-border">
+        <div class="container">
+          <a class="navbar-brand" href="#">Erenpro</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-right">
+              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#main">Home</a></li>
+              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#review">Reviews</a></li>
+              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#project">Project</a></li>
+              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#faqs">FAQs</a></li>
+              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pricing">Dukung</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav><!-- Navbar End -->
+
+
+      <div id="main" class="main">
+        <div class="home home-2 backdrop-blur-lg">
+          <div class="container-m ">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="hero-content wow fadeIn">
+                  <div class="hero-content-inner">
+                    <h1>Predict News</h1>
+                    <p>Predict real news or fake news</p>
+                    <button id="form-submit" class="btn btn-primary btn-action btn-white nyud" onclick="step1()">How to Using ?</button>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+               
+               
+              <div class="col-md-6 rounded-md backdrop-blur-3xl">
+  <div class="hero-form ">
+    <form id="contactForm" data-toggle="validator" class="shake" action="/predict-news/result/" method="post">
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label for="url" class="h4">URL/Link</label>
+          <input name="url" type="text" class="form-control url" id="url" placeholder="https://..." >
+          <div class="help-block with-errors"></div>
+        </div>
+        <div style="display:inline-block;padding:2px 50%">or</div>
+        <div class="form-group col-sm-12">
+          <label for="judul" class="h4">Teks</label>
+          <input name="ttl" type="text" class="form-control judul" id="judul" placeholder="This is title....">
+          <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group col-sm-12">
+          <textarea name="text" class="form-control" id='isinya' rows="8" cols="40" placeholder="This is content...."></textarea>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <button id="form-submit" class="btn-action" name='yokpred' onclick="loading()" value='Predict'>Predict</button>
+
+      <div id="msgSubmit" class="h3 text-center hidden"></div>
+      <div class="clearfix"></div>
+    </form>
+  </div>
+</div>
+
+
+ <div class="col-md-6 contak">
+   <div class="hero-form">
+     <form id="contactForm" data-toggle="validator" class="shake" action="mailto:reihan676590@gmail.com">
+       <div class="row">
+         <div class="form-group col-sm-12">
+           <label for="name" class="h4">Nama*</label>
+           <input type="text" class="form-control" id="name" placeholder="Company Name" required data-error="Name is required">
+           <div class="help-block with-errors"></div>
+         </div>
+         <div class="form-group col-sm-12">
+           <label for="email" class="h4">Email*</label>
+           <input type="email" class="form-control" id="email" placeholder="Email address" required>
+           <div class="help-block with-errors"></div>
+         </div>
+         <div class="form-group col-sm-12">
+           <label for="pesan" class="h4">Pesan*</label>
+           <input type="text" class="form-control" id="name" placeholder="Message/Critics/Sugestiom" required data-error="Value is required">
+           <div class="help-block with-errors"></div>
+         </div>
+       </div>
+       <button type="submit" id="form-submit" class="btn-action" onclick="document.querySelector('.contak').style.display='none'">Kirim</button>
+       <div id="msgSubmit" class="h3 text-center hidden"></div>
+       <div class="clearfix"></div>
+     </form>
+   </div>
+ </div>
+          
+              
+            </div>
+
+          </div>
+        </div><!-- Hero End -->
+
+ <!-- Review or Rating -->
+
+ <!-- Reviews-->
+ <div id="statrate" class="pricing-section text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl">
+        <div class="pricing-intro">
+          <h1>Rating</h1>
+              <button class="btn btn-primary btn-action " type="button" onclick="tampUl()">Lihat Ulasan</button>
+        </div>
+        <div class="row">
+          <div class="col-lg">
+            <div class="table-left" style="box-shadow: 1px 1px 10px black;">
+              <canvas id="rateChartbar" width="720" height="640"></canvas>
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="table-left" style="box-shadow: 1px 1px 10px black;">
+              <canvas id="rateChartscatter" width="720" height="640"></canvas>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- Review or Rating -->
+
+     <!-- Reviews-->
+
+<!-- intro -->
+        <div id="services" class="lbl-services">
+          <div class="container">
+            <div class="row justify-center">
+              <div class="col-md-8">
+                <div class="service-intro wow fadeInDown text-center">
+                 <h1>Tools yang mungkin berguna</h1>
+                 <p>
+                  Project ini bisa dikatakan tools, tools ini memakai machine learning dan menggunakan data science untuk mengolah dan memvisualisasikan data.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+              <div class="review"><canvas id="rting"></canvas></div>
+              
+            <div class="lbl_cards">
+                <div class="card_single">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="../static/img/p1.png" width="50" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Dilatih dengan Data Asli</h3>
+                    <p>Model ML yang dipakai tentunya dilatih dengan data di dunia nyata yang pernah atau sedang terjadi.</p>
+                  </div>
+                </div>
+                <div class="card_single card3">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="../static/img/p6.png" width="50" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Encrypted</h3>
+                    <p>Penggunaan tool dilakukan hanya disisi klien, tidak dilakukan di server, sehingga data klien aman dan hanya tersimpam di browser pribadi.</p>
+                  </div>
+                </div>
+                <div class="card_single card3">
+                  <div class="card-icon">
+                    <div class="card-img">
+                      <img src="../static/img/p6.png" width="50" alt="Feature">
+                    </div>
+                  </div>
+                  <div class="card-text">
+                    <h3>Jangan Terpaku</h3>
+                    <p>Tool ini merupakan hasil analisa robot, jadi ada kemungkinan bisa salah. Untul itu bantu kami dengan memberi ulasan atas hasil analisa projek kami, apakah sesuai atau tidak.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+<!-- end intro -->
+
+ <!-- Pricing Tables -->
+        <div id="pricing" class="pricing-section text-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 offset-sm-2">
+                <div class="pricing-intro">
+                  <h1>Beri Dukungan.</h1>
+                  <p>
+                    Dengan memberikan ulasan saja udah cukup, lebih juga boleh.
+                  </p>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="table-left">
+                      <h3>Traktir</h3>
+                      <p>Apa saja boleh.</p>
+                      <div class="pricing-details">
+                       <span><i class="fa fa-coffee"></i></span>
+                       
+                      </div>
+                      <button class="btn btn-primary btn-action" type="button" onclick="window.location.href='https://trakteer.id/reyhananf/tip'">Traktir</button>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="table-right">
+                      <h3>Beri Nilai</h3>
+                      <p>Apakah Tool ini berguna?</p>
+
+                      <div class="pricing-details">
+                       <span><i class="fa fa-star"></i>
+                       <i class="fa fa-star"></i>
+                       <i class="fa fa-star"></i></span>
+                      </div>
+                      <button class="btn btn-primary btn-action btn-white" type="button" onclick="rate()">Ulas</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+     
+
+ <!-- Features Section -->
+        <div id="project" class="flex-split">
+          <div class="container-s">
+            <div class="flex-intro align-center wow fadeIn">
+              <h2 id='projeknya'>The More Project</h2>
+            </div>
+            <!-- <div class="flex-inner align-center">
+              <div class="f-image wow">
+                <img class="img-fluid" src="../static/img/feature.png" alt="Feature">
+              </div>
+              <div class="f-text">
+                <div class="left-content">
+                  <h2>Predict News</h2>
+                  <p> Go analyst informatiom with knowing hoax news and fact news. <br/> Use the machine have training and learning.</p>
+                  <a class="btn btn-primary btn-action text-white" href="#">Show</a>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="flex-inner flex-inverted align-center">
+              <div class="f-image f-image-inverted">
+                <img class="img-fluid" src="../static/img/feature2.png" alt="Feature">
+              </div>
+              <div class="f-text">
+                <div class="left-content">
+                  <h2>Predict He(Crush)</h2>
+                  <p><font>Haha, curious? Give envelope, suggestion, criticism, message or anything for support project! <br/>ONLY PREDICT,THE KNOW HEART HUMAN ONLY GOD AND SELFING!</font></p>
+                  <div class="btn btn-primary btn-action text-white" >Coming Soon!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action Section -->
+
+
+   <div class="yd_cta_box">
+          <div class="cta_box">
+            <div class="cta_box_inner">
+              <div class="container">
+                <div class="col-lg-8 col-xs-12">
+                  <h4>There Idea Project?</h4>
+                  <h2>Just write in form 'Contact us' for send idea or suggestion!
+                  No there? Must There!</h2>
+                  <div class="btn-action" onclick="document.querySelector('.contak').style.display='block'">Contact or Suggestion</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+
+
+        <!-- Faq Section -->
+        <div id="faqs" class="yd_faqs">
+          <div class="container">
+              <div class="col-md-10 offset-md-1">
+                <div class="faq_intro">
+                  <div class="faq_inner">
+                    <h2>Lebih Lanjut</h2>
+                  </div>
+                </div>
+                <div id="accordion">
+                  <div class="card mb-0">
+                    <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                      <a class="card-title">What is Erenpro?</a>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam dicta, minus recusandae molestiae quis? Ab veritatis velit a ullam, sequi..
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-0">
+                    <div class="card-header collapsed" data-toggle="collapse" href="#collapseTwo">
+                      <a class="card-title">Disclaimer</a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                      <div class="card-body">
+                        <h1>Disclaimer for Erentech Project</h1>
+
+<p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at reihan676590@gmail.com</p>
+
+<h2>Disclaimers for Erentech Project</h2>
+
+<p>All the information on this website - https://reyhananf7.pythonanywhere.com - is published in good faith and for general information purpose only. Erentech Project does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information you find on this website (Erentech Project), is strictly at your own risk. Erentech Project will not be liable for any losses and/or damages in connection with the use of our website. Our Disclaimer was generated with the help of the <a href="https://www.privacypolicyonline.com/disclaimer-generator/">Disclaimer Generator</a>.</p>
+
+<p>From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link which may have gone 'bad'.</p>
+
+<p>Please be also aware that when you leave our website, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their "Terms of Service" before engaging in any business or uploading any information.</p>
+
+<h2>Consent</h2>
+
+<p>By using our website, you hereby consent to our disclaimer and agree to its terms.</p>
+
+<h2>Update</h2>
+
+<p>Should we update, amend or make any changes to this document, those changes will be prominently posted here.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-0">
+                    <div class="card-header collapsed" data-toggle="collapse" href="#collapseThree">
+                      <a class="card-title">Privacy Police</a>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                        <h1>Privacy Policy for Erentech Project</h1>
+
+<p>At Erentech Project, accessible from https://reyhananf7.pythonanywhere.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Erentech Project and how we use it.</p>
+
+<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
+
+<h2>Log Files</h2>
+
+<p>Erentech Project follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information. Our Privacy Policy was created with the help of the <a href="https://www.privacypolicyonline.com/privacy-policy-generator/">Privacy Policy Generator</a>.</p>
+
+
+
+
+<h2>Privacy Policies</h2>
+
+<P>You may consult this list to find the Privacy Policy for each of the advertising partners of Erentech Project.</p>
+
+<p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Erentech Project, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
+
+<p>Note that Erentech Project has no access to or control over these cookies that are used by third-party advertisers.</p>
+
+<h2>Third Party Privacy Policies</h2>
+
+<p>Erentech Project's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. </p>
+
+<p>You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites. What Are Cookies?</p>
+
+<h2>Children's Information</h2>
+
+<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
+
+<p>Erentech Project does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+
+<h2>Online Privacy Policy Only</h2>
+
+<p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Erentech Project. This policy is not applicable to any information collected offline or via channels other than this website.</p>
+
+<h2>Consent</h2>
+
+<p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-0">
+                    <div class="card-header collapsed" data-toggle="collapse" href="#collapseFour">
+                      <a class="card-title">Terms and Conditions</a>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                        <h2><strong>Terms and Conditions</strong></h2>
+
+<p>Welcome to Erentech Project!</p>
+
+<p>These terms and conditions outline the rules and regulations for the use of Erentech Project's Website, located at https://reyhananf7.pythonanywhere.com.</p>
+
+<p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Erentech Project if you do not agree to take all of the terms and conditions stated on this page.</p>
+
+<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same. Our Terms and Conditions were created with the help of the <a href="https://www.privacypolicyonline.com/terms-conditions-generator/">Terms & Conditions Generator</a>.</p>
+
+<h3><strong>Cookies</strong></h3>
+
+<p>We employ the use of cookies. By accessing Erentech Project, you agreed to use cookies in agreement with the Erentech Project's Privacy Policy.</p>
+
+<p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
+
+<h3><strong>License</strong></h3>
+
+<p>Unless otherwise stated, Erentech Project and/or its licensors own the intellectual property rights for all material on Erentech Project. All intellectual property rights are reserved. You may access this from Erentech Project for your own personal use subjected to restrictions set in these terms and conditions.</p>
+
+<p>You must not:</p>
+<ul>
+    <li>Republish material from Erentech Project</li>
+    <li>Sell, rent or sub-license material from Erentech Project</li>
+    <li>Reproduce, duplicate or copy material from Erentech Project</li>
+    <li>Redistribute content from Erentech Project</li>
+</ul>
+
+<p>This Agreement shall begin on the date hereof.</p>
+
+<p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Erentech Project does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Erentech Project,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Erentech Project shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p>
+
+<p>Erentech Project reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>
+
+<p>You warrant and represent that:</p>
+
+<ul>
+    <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
+    <li>The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;</li>
+    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy</li>
+    <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
+</ul>
+
+<p>You hereby grant Erentech Project a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>
+
+<h3><strong>Hyperlinking to our Content</strong></h3>
+
+<p>The following organizations may link to our Website without prior written approval:</p>
+
+<ul>
+    <li>Government agencies;</li>
+    <li>Search engines;</li>
+    <li>News organizations;</li>
+    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
+    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+</ul>
+
+<p>These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site.</p>
+
+<p>We may consider and approve other link requests from the following types of organizations:</p>
+
+<ul>
+    <li>commonly-known consumer and/or business information sources;</li>
+    <li>dot.com community sites;</li>
+    <li>associations or other groups representing charities;</li>
+    <li>online directory distributors;</li>
+    <li>internet portals;</li>
+    <li>accounting, law and consulting firms; and</li>
+    <li>educational institutions and trade associations.</li>
+</ul>
+
+<p>We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Erentech Project; and (d) the link is in the context of general resource information.</p>
+
+<p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site.</p>
+
+<p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Erentech Project. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.</p>
+
+<p>Approved organizations may hyperlink to our Website as follows:</p>
+
+<ul>
+    <li>By use of our corporate name; or</li>
+    <li>By use of the uniform resource locator being linked to; or</li>
+    <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li>
+</ul>
+
+<p>No use of Erentech Project's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
+
+<h3><strong>iFrames</strong></h3>
+
+<p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
+
+<h3><strong>Content Liability</strong></h3>
+
+<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+
+<h3><strong>Reservation of Rights</strong></h3>
+
+<p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+
+<h3><strong>Removal of links from our website</strong></h3>
+
+<p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
+
+<p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
+
+<h3><strong>Disclaimer</strong></h3>
+
+<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+
+<ul>
+    <li>limit or exclude our or your liability for death or personal injury;</li>
+    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+</ul>
+
+<p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
+
+<p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+        <!-- CTA Signup -->
+        <div class="yd_cta_sub" id="aboutmee">
+          <div class="cta_sub">
+            <div class="cta_sub_inner">
+              <div class="container">
+                <div class="col-lg-8 offset-lg-2">
+                  <h4>About Me</h4>
+                  <h2>Ada saran atau kepo siapa pembuatnya?</h2>
+                  <button class="btn btn-primary btn-action btn-white" type="button" onclick="document.querySelector('.contak').style.display='block'">Contact Us</button>
+                  <button class="btn btn-primary btn-action btn-white" type="button" onclick="window.location.href='https://erenprofil.netlify.app';">Profil</button>
+                  <div id="response"></div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Footer -->
+        <div class="footer">
+          <div class="container">
+            <div class="row text-center">
+              <div class="col-lg-2 col-md-3 col-sm-12">
+                <div class="footer-logo">
+                  <h2>E R E N P R O.</h2>
+                  <small class="text-white">©Erentech-2022</small>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <ul class="footer-menu">
+                  <li><a href="#aboutmee">About</a> </li>
+                  <li><a href="#collapseThree">Privacy</a> </li>
+                  <li><a href="#collapseFour">Terms</a> </li>
+                  <li><a href="#aboutmee">Contact</a> </li>
+                  <li><a href="#collapseTwo">Disclaimer</a> </li>
+                </ul>
+              </div>
+              <div class="col-lg-4 col-md-3 col-sm-12">
+                
+              </div>
+            </div>
+            <!-- Scroll To Top -->
+              <a id="back-top" class="back-to-top js-scroll-trigger" href="#main"><i class="fa fa-arrow-up" style="font-size: 25px"></i></a>
+            <!-- Scroll To Top Ends-->
+          </div>
+        </div>
+
+      </div> <!-- Main -->
+    </div><!-- Wrapper -->
+
+
+<div class="rt">
+  <div class="rate">
+   <h2 class="hrate" style="margin: 2px auto">Rate</h2>
+   <form action="/predict-news/" method='post'>
+   
+ <div class="star" name='vstar'>
+   <i class="fa fa-star s"></i>
+   <i class="fa fa-star s1"></i>
+   <i class="fa fa-star s2"></i>
+   <i class="fa fa-star s3"></i>
+   <i class="fa fa-star s4"></i>
+ <div class="pstar" name='pstar'></div>
+ </div>
+ 
+ <div class="value" name='vrate'>0</div>
+ <input type="range" min="0" max="5" step="0.01" value="0" name='valrate' class='valrate'>
+ <br />
+ <h3 class="hr" style="text-align: center">Rate</h3>
+ <div class="rname">
+   
+   <div class="btn-group pilcov" role="group" aria-label="Basic example">
+     
+	  <div type="button" class="btn btn-light border shadow-sm kbar" onclick="nn('profil')">Nama</div>
+	  
+	</div>
+	
+	
+<div class="kr">
+  
+<input class="form-control rn krn" type="text" placeholder="Namamu.." aria-label="Namamu.." name='nama' >
+
+</div>
+ </div>
+ 
+ 
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Ulasan</label>
+  <textarea class="form-control ulas" id="exampleFormControlTextarea1" rows="3" placeholder="Lewati aja .." value='Bisa dilewat..' name='ulas'></textarea>
+</div>
+
+<div class="mb-3">
+  <input type="checkbox" name="anonim" id="anonim">
+  <label for="anonim" class="form-label">Sembunyikan Nama</label>
+</div>
+
+<div class="p-2 w-full">
+            
+  <button class="kirim btn btn-primary btn-action" name='rbtn' onclick="nu()" value='Kirim Feedback'>Kirim Feedback</button>
+            
+            <div onclick="na()" style='border-radius:20px;'>Nanti</div>
+          </div>
+          
+</form>
+
+ </div>
+ 
+</div>
+  
+
+
+<div class="using-penutup">
+  <div class="btn but">X (Close)</div>
+  <h2>URL</h2>
+  <h3>Step 1</h3>
+  <div>Copy the url/link of the news to be predicted</div>
+  <h3>Step 2</h3>
+  <div>Paste the url on the form provided (form url)</div>
+  <h3>Step 3</h3>
+  <div>Click button 'Predict' to Predicted News</div>
+
+  <h2>Text</h2>
+  <h3>Step 1</h3>
+  <div>Provide the text that will be predicted</div>
+  <h3>Step 2</h3>
+  <div>Enter a title or text theme in the top column text ( This is title..)</div>
+  <h3>Step 3</h3>
+  <div>Enter the text content in the bottom column text ( This is content..)</div>
+  <h3>Step 4</h3>
+  <div>Click button 'Predict' to Predicted News</div>
+</div>
+
+<script src="{{url_for('static', filename='js/Chart.bundle.js')}}" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" type="text/javascript" charset="utf-8"></script>
+    
+<script>
+  function descape(arr){
+    let arre = []
+    arr.forEach(item => { 
+      let a = item.replace('[&#39;','');
+      let b = a.replace('&#39;','');
+      let c = b.replace('&#39;])','');
+      let d = c.replace('&#39;]','');
+      let e = d.replace('&#39;','');
+      let f = e.replace('&#39','');
+      let g = f.replace('#39','');
+      arre.push(g)
+    });
+    return arre;
+  }
+  var rateChart = document.querySelector('#rateChartpolar');
+  let rate_nama = '{{dname}})'
+  let rate_message = '{{dmessage}}'
+  let rate_anonim = '{{danonim}}'
+  
+  rate_nama = rate_nama.split(',');
+  rate_nama = descape(rate_nama);
+
+  rate_message = rate_message.split(';,');
+  rate_message = descape(rate_message);
+
+  rate_anonim = rate_anonim.split(',');
+  rate_anonim = descape(rate_anonim);
+  
+  let datarate ={{drate}};
+  let dataid = {{did}};
+  let bintang = [];
+
+  let arrate = {'satu':0,'dua':0,'tiga':0,'empat':0,'lima':0}
+  for(let i=0; i < datarate.length; i++){
+    if(datarate[i] <= 1.2){
+      arrate['satu'] += 1;
+      bintang.push(' ★');
+    }else if(datarate[i] <= 2.2){
+      arrate['dua'] += 1;
+      bintang.push(' ★★');
+    }else if(datarate[i] <= 3.2){
+      arrate['tiga'] += 1;
+      bintang.push(' ★★★');
+    }else if(datarate[i] <= 4.2){
+      arrate['empat'] += 1;
+      bintang.push(' ★★★★');
+    }else if(datarate[i] <= 5.2){
+      arrate['lima'] += 1;
+      bintang.push(' ★★★★★');
+    }else{
+      arrate['empat'] += 1;
+      bintang.push(' ★★★★');
+    }
+  }
+  
+  let ulasanKata = [];
+  for(let j = 0;j < rate_anonim.length; j++){
+    if(rate_anonim[j] == 'true'){
+       ulasanKata.push(`<div class="box-ulasan">
+        <div class="flexu">
+          <div class="foto-ulasan"></div>
+        <div class="tahta">
+          <div class="nama-ulasan">*Orang</div>
+          <div class="rate-ulasan">${bintang[j]}</div>
+        </div>
+      </div>
+        <div class="pesan">
+          <div class="message-ulasan">${rate_message[j]}</div>
+        </div>
+      </div><hr>`);
+    }else if(rate_anonim[j] == 'false'){
+      ulasanKata.push(`<div class="box-ulasan">
+        <div class="flexu">
+          <div class="foto-ulasan"></div>
+        <div class="tahta">
+          <div class="nama-ulasan">${rate_nama[j]}</div>
+          <div class="rate-ulasan">${bintang[j]}</div>
+        </div>
+      </div>
+        <div class="pesan">
+          <div class="message-ulasan">${rate_message[j]}</div>
+        </div>
+      </div><hr>`);
+    }else if(rate_anonim[j] == ' true'){
+      ulasanKata.push(`<div class="box-ulasan">
+        <div class="flexu">
+          <div class="foto-ulasan"></div>
+        <div class="tahta">
+          <div class="nama-ulasan">*Orang</div>
+          <div class="rate-ulasan">${bintang[j]}</div>
+        </div>
+      </div>
+        <div class="pesan">
+          <div class="message-ulasan">${rate_message[j]}</div>
+        </div>
+      </div><hr>`);
+    }else if(rate_anonim[j] == ' false'){
+      ulasanKata.push(`<div class="box-ulasan">
+        <div class="flexu">
+          <div class="foto-ulasan"></div>
+        <div class="tahta">
+          <div class="nama-ulasan">${rate_nama[j]}</div>
+          <div class="rate-ulasan">${bintang[j]}</div>
+        </div>
+      </div>
+        <div class="pesan">
+          <div class="message-ulasan">${rate_message[j]}</div>
+        </div>
+      </div><hr>`);
+    }else{
+      console.log('salah'+rate_anonim[j])
+    }
+    
+  }
+  ulasanKata.forEach(item => { 
+    document.querySelector('.wrap-ulasan').innerHTML += item
+  })
+ 
+  var rateDataBar = {
+    labels:['★ ★ ★ ★ ★',' ★ ★ ★ ★', ' ★ ★ ★', ' ★ ★ ', ' ★ '],
+    datasets:[{
+      data:[arrate['lima'],arrate['empat'],arrate['tiga'], arrate['dua'], arrate['satu'] ],
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+    }]
+  };
+
+  var dataS = [];
+  for(let i=0; i < dataid.length; i++){
+    let e = dataid[i] % 10;
+    dataS.push({x:e,y:datarate[i]})
+  }
+
+  var ratedataScatter = {
+    datasets: [{
+      label: 'Rata-rata Feedback',
+      data: dataS,
+      backgroundColor: 'rgb(255, 99, 132)'
+    }],
+  };
+
+ 
+  var barChart = new Chart(document.querySelector('#rateChartbar'),{
+    type:'bar',
+    data:rateDataBar,
+    options:{
+      indexAxis:'y',
+      plugins:{
+        legend : {
+          display : false
+        }
+      }
+    }
+  });
+  var scatterChart = new Chart(document.querySelector('#rateChartscatter'),{
+    type:'scatter',
+    data:ratedataScatter
+  });
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="https://unpkg.com/@popperjs/core@2" type="text/javascript" charset="utf-8"></script>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    
+    <script src="{{url_for('static', filename='js/plugins.js')}}" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="{{url_for('static', filename='js/menu.js')}}" type="text/javascript" charset="utf-8"></script>
+    
+    
+    <script src="{{url_for('static', filename='js/custom.js')}}" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/custom.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../static/js/custom.js" type="text/javascript" charset="utf-8"></script>
+    -->
+    <script src="{{url_for('static', filename='js/Chart.bundle.js')}}" type="text/javascript" charset="utf-8"></script>
+    
+    
+    
+    
+    
+    
+  </body>
+</html>

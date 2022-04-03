@@ -1,0 +1,287 @@
+
+    {% extends "layout_pn.html" %}
+
+
+    {% block content %}
+    <style type="text/css">
+      #hasil{
+        font-family: sans-serif;
+        background: #FFEEFF;
+	      background: #fafafa;
+      	background: linear-gradient(to top, #0ab3e4, #102976);
+      }
+      .epricing-section{
+        border-radius: 10px;
+        margin-top: 35px;
+        background: rgba(109, 105, 105, 0.3);
+        border: 1px solid grey;
+        box-shadow: 1px 1px 30px #2d2d2d;
+      }
+      .epricing-section h1{
+        color: white;
+      }
+      .ecol{
+        color: black;
+        border-radius: 10px;
+        margin-top: 35px;
+        background: white;
+        box-shadow: 1px 1px 10px #2d2d2d;
+        text-align:left;
+        padding-left:15px;
+        padding-right:15px;
+      }
+      .ecol h3, .ecol p{
+        color:black;
+        text-align:left;
+      }
+     
+
+      @media(min-width:100px){
+      .kbnr{
+        display: block;
+        text-align:left;
+      }
+      .bnr{
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        color: green;
+        margin: 5px auto;
+        text-align:left;
+      }
+      .slh{
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        color: red;
+        margin: 5px auto;
+        text-align:left;
+      }
+    }
+    
+    @media(min-width: 600px){
+      .kbnr{
+        display: block;
+      }
+      .bnr{
+        text-align: center;
+        font-size: 30px;
+        color: green;
+      }
+    
+      .slh{
+        text-align: center;
+        font-size: 30px;
+        color: red;
+      }
+    }
+    
+    
+    </style>
+    
+    <div id="hasil" class="flex-split">
+      <div class="container ">
+        <div class="flex align-center wow fadeInt">
+          <div id="" class="pricing-section epricing-section text-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12 col-lg-12 pricing-intro">
+                  <h1 style="z-index:1000;">Hasil</h1>
+                  <div class="row">
+                    
+                    <div class="col-md ">
+                      <div class="table-left cc ecol">
+                        <h3>Content</h3>
+                        <p>
+                        {{ tit }} <br/> {{ con }} 
+                        <hr/> 
+                        {{ tltext }} <br/> {{ text }}
+                       </p>
+                       </div>
+                      </div>
+                    </div>
+                    
+                    <div class="col-xl">
+                      <div class="table-left ecol">
+                        <div class="kbnr">
+                          <div class="bnr" ></div>
+                          <canvas id="myChart"></canvas>
+                          <div class="slh"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+    <button class="btn btn-primary btn-action" type="button" onclick="rate()">Beri Nilai</button>
+    
+                  <div class="row">
+                    <div class="col-sm-8 offset-sm-2">    
+                      <div class="table-left ecol">
+                        <h3>Kesimpulan</h3>
+                      <div class="kesim"></div>
+                    </div>
+                     
+                      
+                    <div class="col-sm-8 offset-sm-2">
+                      <div class="table-left  ecol">
+                        <h3>Alert</h3>
+                           <div style="-moz-border-radius: 11px; -webkit-border-radius: 10px; background-color:  white; border: 7px solid orange; border-radius: 11px; padding: 11px; t-align: left; color:orange; margin:10px;">INGAT! Jangan percaya sepenuhnya pada hasil ini, karena ini merupakan hasil pembelajaran mesin sewaktu waktu salah prediksi!</div>
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="rt">
+      <div class="rate">
+       <h2 class="hrate" style="margin: 2px auto">Rate</h2>
+       <form action="/predict-news/result/" method='post'>
+       
+     <div class="star" name='vstar'>
+       <i class="fa fa-star s"></i>
+       <i class="fa fa-star s1"></i>
+       <i class="fa fa-star s2"></i>
+       <i class="fa fa-star s3"></i>
+       <i class="fa fa-star s4"></i>
+     <div class="pstar" name='pstar'></div>
+     </div>
+     
+     <div class="value" name='vrate'>0</div>
+     <input type="range" min="0" max="5" step="0.01" value="0" name='valrate' class='valrate'>
+     <br />
+     <h3 class="hr" style="text-align: center">Rate</h3>
+     <div class="rname">
+       
+       <div class="btn-group pilcov" role="group" aria-label="Basic example">
+         
+          <div type="button" class="btn btn-light border shadow-sm kbar" onclick="nn('profil')">Nama</div>
+          
+        </div>
+        
+        
+    <div class="kr">
+      
+    <input class="form-control rn krn" type="text" placeholder="Namamu.." aria-label="Namamu.." name='nama' value='Anonim'>
+    
+    </div>
+     </div>
+     
+     
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Ulasan</label>
+      <textarea class="form-control ulas" id="exampleFormControlTextarea1" rows="3" placeholder="Lewati aja .." value='Bisa dilewat..' name='ulas'></textarea>
+    </div>
+    <div class="mb-3">
+      <input type="checkbox" name="anonim" id="anonim">
+      <label for="anonim" class="form-label">Sembunyikan Nama</label>
+    </div>
+    <div class="p-2 w-full">
+                
+      <button class="kirim btn btn-primary btn-action" name='rbtn' onclick="nu()" value='Kirim Feedback'>Kirim Feedback</button>
+                
+                <div onclick="na()" style='border-radius:20px;'>Nanti</div>
+              </div>
+              
+    </form>
+    
+     </div>
+     
+    </div>
+        
+        
+        </div>
+
+        
+        
+        <script src="{{url_for('static', filename='js/Chart.bundle.js')}}" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" type="text/javascript" charset="utf-8"></script>
+       
+       <script type="text/javascript">
+       window.location.href = '#hasil';
+       function grap() {
+           let n_benar = '{{ n_benar }}';
+           let n_salah = '{{ n_salah }}';
+           let persen_benar = '{{ persen_benar }}';
+           let persen_salah = '{{ persen_salah }}';
+           
+           document.querySelector('.bnr').innerHTML = `${Math.round(persen_benar)}% Benar`;
+           document.querySelector('.slh').innerHTML = `${Math.round(persen_salah)}% Hoax`;
+           
+           let kond = '';
+           
+           if(persen_benar > persen_salah){
+             kond = 'Benar';
+           }else if(persen_benar < persen_salah){
+             kond = 'Hoax';
+           }else{
+             kond = 'Bingung..'
+           }
+           
+           if(kond == 'Benar'){
+           document.querySelector('.kesim').innerHTML = ` <div style="-moz-border-radius: 11px; -webkit-border-radius: 10px; background-color:  white; border: 7px solid green; border-radius: 11px; padding: 11px; t-align: left; color:red; margin:10px;">Kesimpulan : Berita/pernyataan ini '${kond}'</div>`;
+           }else if(kond == 'Hoax'){
+           document.querySelector('.kesim').innerHTML = ` <div style="-moz-border-radius: 11px; -webkit-border-radius: 10px; background-color:  white; border: 7px solid red; border-radius: 11px; padding: 11px; t-align: left; color:red; margin:10px">Kesimpulan : Berita/pernyataan ini '${kond}'</div>`;
+           }
+           
+           
+           //from  w ww  .  j a v  a  2  s.com
+           var data = {
+             labels: ["Hoax", "Benar" ],
+             datasets: [{
+                 data: [n_salah, n_benar],
+                 backgroundColor: ["#FF6283",
+               "#36A2EB"
+               ],
+                 hoverBackgroundColor: ["#FF6283",
+               "#36A2EB"
+               ]
+           }
+       
+           ]
+           }
+       
+           ;
+       
+           var promisedDeliveryChart = new Chart(document.getElementById('myChart'), {
+       
+               type: 'doughnut',
+               data: data,
+               options: {
+       
+                 responsive: true,
+                 legend: {
+                   display: true
+                 }
+               }
+             }
+       
+           );
+       
+           
+         }
+         
+        if('{{ error }}' == 'True'){
+        document.querySelector('.ccc').innerHTML=`<div style="-moz-border-radius: 11px; -webkit-border-radius: 10px; background-color: #EDEBEB; border-left: 7px solid red; border-radius: 11px; padding: 11px; t-align: left; color:red; margin:10px;">Maaf Mungkin URL/Link yang anda masukan tidak valid, dienkripsi atau tidak diizinkan untuk diakses!<br /> Coba gunakan URL/Link lain atau bisa menggunakan kolom teks dengan cara salin dan tempel!</div>`;
+        }else{
+        grap();
+      
+        }
+        
+      
+      
+      </script>
+    
+    
+    
+    {%  endblock %}
+    
+    
+ 
