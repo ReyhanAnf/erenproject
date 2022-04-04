@@ -89,6 +89,8 @@ def stemmingen(x2):
 
 app = Flask(__name__) 
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://newxnbqvqdfwsd:fceea961a822ee10e407b84a717ca3764a537fa304e7229dc9101d1f98d05586@ec2-52-54-212-232.compute-1.amazonaws.com:5432/d28l1mvuiuerk2'
+
 #====================
 
 
@@ -330,39 +332,5 @@ def result_np():
     
 
 
-
-app.run(debug=True, host='0.0.0.0') 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @app.route("/function_route", methods=["GET", "POST"])
-# def my_function():
-#     if request.method == "POST":
-#         data = {}# empty dict to store data
-#         data["title"] = request.json["title"]
-#         data["release_date"] = request.json["movie_release_date"]
-        
-#         #do whatever you want with the data here e.g look up in database or something
-#         #if you want to print to console
-        
-#         print(data, file=sys.stderr)
-        
-#         #then return something back to frontend on success
-#         #this returns back received data and you should see it in browser console
-#         #because of the console.log() in the script.
-#         return jsonify(data)
-#     else:
-#         print("aya nu salah")
+if __name__ == '__main__':
+    app.run(debug=True) 
